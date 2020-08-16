@@ -187,41 +187,108 @@ body {
 /* width */
 ::-webkit-scrollbar {
     width: 5px;
-  }
-  
-  /* Track */
-  ::-webkit-scrollbar-track {
+}
+
+/* Track */
+::-webkit-scrollbar-track {
     box-shadow: inset 0 0 5px #37363873;
     border-radius: 10px;
-  }
-  
-  /* Handle */
-  ::-webkit-scrollbar-thumb {
+}
+
+/* Handle */
+::-webkit-scrollbar-thumb {
     background: #37363873;
     border-radius: 10px;
-  }
+}
 
-  .reset-button {
-      width: 100%;
-  }
+.reset-button {
+    width: 100%;
+}
 
-  .finish__container {
+.finish__container {
     height: 400px;
     margin-top: 2%;
     background: #37363873;
     padding-top: 40px;
-
+    text-align: center;
     h2 {
-        height: 0px;
+    height: 0px;
     }
-  }
-  .finish__container_absolute {
+}
+.finish__container_absolute {
     height: 715px;
-      img {
-          margin-bottom: 2%;
-      }
+    img {
+        margin-bottom: 2%;
+    }
 
-      h3 {
-        text-align: center;
-      }
-  }
+    h3 {
+    text-align: center;
+    }
+}
+
+@media (max-width: 991px) {
+    .answer__description {
+        margin-top: 3%;
+        padding: 20px 10px;
+    }
+}
+
+@media (max-width: 768px) {
+    .questions {
+        flex-wrap: wrap;
+    }
+
+    .question {
+        margin-top: 20px;
+        .question__container {
+            height: 100%;
+            padding-top: 20px;
+            flex-direction: column;
+            text-align: center;
+            img {
+                margin-bottom: 10px;
+            }
+        }
+    }
+
+    .description__title {
+        grid-template-columns: 100%;
+        grid-template-rows: 1fr 1fr;
+        margin-bottom: 5px;
+        h3 {
+            margin-bottom: 0px;
+        }
+    }
+
+    .description__body {
+        flex-direction: column;
+        overflow: inherit;
+        height: 100%;
+        align-items: center;
+    }
+
+    .finish__container {
+        h2, .h2 {
+            font-size: 1.225rem;
+        }
+
+        h4, .h4 {
+            font-size: 1.01875rem;
+        }
+    }
+}
+
+@media (max-width: 500px) {
+    .finish__container_absolute {
+        height: 100%;
+        img {
+            width: 100%;
+        }
+    }
+}
+
+@media (max-width: 361px) {
+    .answer__description img {
+        width: 100%;
+    }
+}

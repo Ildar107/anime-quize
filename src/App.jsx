@@ -20,7 +20,6 @@ const App = () => {
   const [currentRound, setRound] = useState(0);
   const [isRight, setIsRight] = useState(false);
   const [selectedItem, setSelectedItem] = useState(null);
-  const [firstSelect, setFirstSelect] = useState(true);
   const [score, setScore] = useState(0);
   const [isFinish, setIsFinish] = useState(false);
   const [currentQuestion, setQuestion] = useState(
@@ -32,7 +31,6 @@ const App = () => {
       setRound(currentRound + 1);
       setIsRight(false);
       setSelectedItem(null);
-      setFirstSelect(true);
       setQuestion(data[currentRound + 1][getRandomInt(maxAnswers)]);
     } else {
       setIsFinish(true);
@@ -49,11 +47,10 @@ const App = () => {
     setRound(0);
     setIsRight(false);
     setSelectedItem(null);
-    setFirstSelect(true);
     setQuestion(data[0][getRandomInt(maxAnswers)]);
   };
 
-  if (isFinish && score === 50) {
+  if (isFinish && score === 30) {
     audioWinner.play();
     return (
       <Container>
@@ -66,7 +63,7 @@ const App = () => {
               {' '}
               {score}
               {' '}
-              out of 50!
+              out of 30!
             </h3>
           </Col>
           <Col lg={11}><button type="button" className="btn btn-info reset-button" onClick={reset}>One more time!</button></Col>
@@ -87,7 +84,7 @@ const App = () => {
               {' '}
               {score}
               {' '}
-              out of 50 possible points
+              out of 30 possible points
             </h4>
           </Col>
           <Col lg={11}><button type="button" className="btn btn-info reset-button" onClick={reset}>One more time!</button></Col>
@@ -118,15 +115,12 @@ const App = () => {
               const itemAudio = document.querySelector('.audio-player audio');
               itemAudio.pause();
               setIsRight(true);
-              if (firstSelect && currentRound > 0) {
-                setScore(score + 10);
-              }
+              setScore(score + 6 - data[currentRound].filter((x) => x.selected).length);
             } else if (!isRight) {
               const audio = new Audio();
               audio.src = './audio/error.mp3';
               audio.play();
             }
-            setFirstSelect(false);
           }}
         />
         <AnswerDescription item={selectedItem} />
