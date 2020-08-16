@@ -1,0 +1,227 @@
+
+@font-face {
+    font-family: 'AnimeAcev05';
+    font-style: normal;
+    font-weight: 400;
+    src: url('../../assets/fonts/9420.ttf');
+}
+
+body {
+    background-image: url('../images/obito.jpg');
+    min-width: 100%;
+    min-height: 100vh;
+}
+
+#root {
+    width: 100%;
+    height: 100%;
+    padding-top: 2vw;
+    font-family: 'AnimeAcev05';
+    color: #d9d1bd;
+}
+
+.questions {
+    margin-top: 1%;
+    flex: 1;
+    flex-wrap: nowrap;
+    box-shadow: -3px 17px 20px 0px #6e227b;
+
+    & .btn {
+        cursor: default !important;
+    } 
+
+    & .btn-info:hover, .btn-info:active:hover {
+        background-color: #9c27b0;
+    }
+}
+
+
+.question {
+    margin-top: 2%;
+    background: #37363873;
+
+    & .question__container {
+        display: flex;
+        align-items: center;
+        justify-content: flex-start;
+        flex-wrap: nowrap;
+        margin: 0 20px;
+        height: 200px;
+        flex: 1;
+        img {
+            height: 150px;
+            width: 150px;
+        }
+
+        & .question__description {
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-start;
+            margin-left: 2%;
+            width: 100%;
+            h4 {
+                border-bottom: 5px solid #6d2279;
+                border-radius: 11px;
+                padding: 10px 20px;
+            }
+
+            audio {
+                margin-top: 2%;
+            }
+        }
+    }
+}
+
+.answers__container {
+    margin-top: 1%;
+    
+}
+
+.answer-audio {
+    margin: 20px;
+    margin-bottom: 0px;
+}
+
+.custom-radio, .custom-control-label {
+    cursor: pointer;
+}
+
+.custom-control-input:not(:disabled):active ~ .custom-control-label::before {
+    color: #fff;
+    background-color: #37363873;
+    border-color: #37363873;
+}
+
+.custom-control-input:not(:disabled):focus ~ .custom-control-label::before {
+    color: #fff;
+    background-color: #37363873;
+    border-color: #9c27b0;
+}
+
+.custom-control-label::before {
+    top: 0;
+    border: 2px solid #37363873;
+}
+
+
+.custom-radio .custom-control-input:checked.right ~ .custom-control-label::after {
+    background-image: url('../images/circle-right.svg');
+}
+
+.custom-radio .custom-control-input:checked.wrong ~ .custom-control-label::after {
+    background-image: url('../images/circle-wrong.svg');
+}
+
+
+.custom-radio .custom-control-input:checked ~ .custom-control-label::before {
+    background: #37363873;
+}
+
+.custom-radio .custom-control-input ~ .custom-control-label::before {
+    background: #0d0c0e73;
+}
+
+.custom-control-input:checked ~ .custom-control-label::before {
+    border-color: #9c27b0;
+}
+
+.custom-control-input:checked.wrong ~ .custom-control-label::before {
+    border-color: #c7234a;
+}
+
+.custom-control-input:checked.right ~ .custom-control-label::before {
+    border-color: #2cb162;
+}
+
+.answers__container > div {
+    border-radius: 5px;
+    background: #37363873;
+}
+
+.answer__description {
+    padding: 20px 0;
+    position: relative;
+}
+
+.answer__description img {
+    width: 360px;
+    display: block;
+}
+
+.answer__description_first {
+    display: flex;
+    align-items: center;
+}
+
+.description__title {
+    display: grid;
+    grid-template-columns: 4fr 2fr;
+    align-items: center;
+    margin-right: 10px;
+}
+
+.description__body {
+    display: flex;
+    height: 340px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.list-group-item  {
+    background: transparent;
+}
+
+.list-group-item.decription {
+    overflow: auto;
+}
+
+.button__control {
+    margin-top: 2%;
+}
+
+.button__control button {
+    width: 100%;
+}
+
+
+/* width */
+::-webkit-scrollbar {
+    width: 5px;
+  }
+  
+  /* Track */
+  ::-webkit-scrollbar-track {
+    box-shadow: inset 0 0 5px #37363873;
+    border-radius: 10px;
+  }
+  
+  /* Handle */
+  ::-webkit-scrollbar-thumb {
+    background: #37363873;
+    border-radius: 10px;
+  }
+
+  .reset-button {
+      width: 100%;
+  }
+
+  .finish__container {
+    height: 400px;
+    margin-top: 2%;
+    background: #37363873;
+    padding-top: 40px;
+
+    h2 {
+        height: 0px;
+    }
+  }
+  .finish__container_absolute {
+    height: 715px;
+      img {
+          margin-bottom: 2%;
+      }
+
+      h3 {
+        text-align: center;
+      }
+  }
