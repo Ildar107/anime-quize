@@ -42,5 +42,6 @@ module.exports = {
     'jsx-a11y/media-has-caption': 0,
     'jsx-a11y/no-noninteractive-tabindex': 0,
     'no-param-reassign': 0,
+    "import/no-named-as-default": 0
   }
 };
