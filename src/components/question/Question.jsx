@@ -5,7 +5,7 @@ import AudioPlayer from '../audio/AudioPlayer';
 const Question = ({ isRight, item }) => (
   <Row className="question">
     <div className="question__container">
-      <img src={isRight ? item.img : './images/none-image.jpg'} alt="" />
+      <img src={isRight ? item.img : './images/none-image.jpg'} className={isRight ? '' : 'secret__img'} alt="" />
       <div className="question__description">
         <h4>{isRight ? item.name : '******'}</h4>
         <AudioPlayer url={item.audio} id="question" />

@@ -7,7 +7,9 @@
 }
 
 body {
-    background-image: url('../images/obito.jpg');
+    background-image: url('../images/1.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
     min-width: 100%;
     min-height: 100vh;
 }
@@ -18,6 +20,12 @@ body {
     padding-top: 2vw;
     font-family: 'AnimeAcev05';
     color: #d9d1bd;
+}
+
+.score {
+    justify-content: flex-end;
+    display: flex;
+    align-items: center;
 }
 
 .questions {
@@ -36,9 +44,16 @@ body {
 }
 
 
+.secret__img {
+    filter: invert(.85);
+}
+
+
 .question {
     margin-top: 2%;
     background: #37363873;
+    box-shadow: -1px 1px 9px 0px #0c163763;
+    border-radius: 5px;
 
     & .question__container {
         display: flex;
@@ -51,6 +66,7 @@ body {
         img {
             height: 150px;
             width: 150px;
+            border-radius: 39% 10% 30% 10%;
         }
 
         & .question__description {
@@ -74,7 +90,9 @@ body {
 
 .answers__container {
     margin-top: 1%;
-    
+    height: 534px;
+    box-shadow: -1px 1px 9px 0px #0c163763;
+    border-radius: 5px;
 }
 
 .answer-audio {
@@ -138,6 +156,10 @@ body {
     background: #37363873;
 }
 
+.answers__container > div:first-child {
+    box-shadow: inset -2px 0px 1px 0px #0c163763;;
+}
+
 .answer__description {
     padding: 20px 0;
     position: relative;
@@ -151,6 +173,7 @@ body {
 .answer__description_first {
     display: flex;
     align-items: center;
+    justify-content: center;
 }
 
 .description__title {
@@ -158,11 +181,12 @@ body {
     grid-template-columns: 4fr 2fr;
     align-items: center;
     margin-right: 10px;
+    height: 68px;
 }
 
 .description__body {
     display: flex;
-    height: 340px;
+    height: 418px;
     overflow: hidden;
     text-overflow: ellipsis;
 }
@@ -215,6 +239,7 @@ body {
     height: 0px;
     }
 }
+
 .finish__container_absolute {
     height: 715px;
     img {
@@ -226,10 +251,32 @@ body {
     }
 }
 
+#world {
+    position: absolute;
+    top: 0;
+    left: 0;
+    z-index: 9997;
+    pointer-events: none;
+    animation-name: fadein;
+    animation-duration: 3s;
+    animation-delay: 6s;
+    animation-fill-mode: forwards;
+    width: 100%;
+    height: 100%;
+}
+
 @media (max-width: 991px) {
     .answer__description {
         margin-top: 3%;
         padding: 20px 10px;
+    }
+
+    .answers__container {
+        height: 100%;
+    }
+
+    .circle {
+        display: none;
     }
 }
 
@@ -255,10 +302,12 @@ body {
         grid-template-columns: 100%;
         grid-template-rows: 1fr 1fr;
         margin-bottom: 5px;
+        height: 142px;
         h3 {
             margin-bottom: 0px;
         }
     }
+    
 
     .description__body {
         flex-direction: column;
@@ -275,6 +324,10 @@ body {
         h4, .h4 {
             font-size: 1.01875rem;
         }
+    }
+
+    .score {
+        justify-content: flex-start;
     }
 }
 

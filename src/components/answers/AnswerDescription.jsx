@@ -23,9 +23,18 @@ const AnswerDescription = ({
           <img src={item.img} alt="" />
           <ul className="list-group list-group-flush">
             <li className="list-group-item" />
-            <li className="list-group-item">{item.Rating}</li>
-            <li className="list-group-item">{item.Year}</li>
-            <li className="list-group-item">{item.Status}</li>
+            <li className="list-group-item">
+              Rating:
+              {` ${item.Rating}`}
+            </li>
+            <li className="list-group-item">
+              Year:
+              {` ${item.Year}`}
+            </li>
+            <li className="list-group-item">
+              Status:
+              {` ${item.Status}`}
+            </li>
             <li className="list-group-item decription">{item.Description}</li>
           </ul>
         </div>

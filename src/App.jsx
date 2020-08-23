@@ -5,10 +5,8 @@ import Question from './components/question/Question';
 import Answers from './components/answers/Answers';
 import AnswerDescription from './components/answers/AnswerDescription';
 import animeData from './data/anime';
-
-function getRandomInt(max) {
-  return Math.floor(Math.random() * Math.floor(max));
-}
+import Sharingan from './components/sharingan/Sharingan';
+import getRandomInt from './utils/randomInt';
 
 const { data } = animeData;
 const audioWinner = new Audio();
@@ -54,6 +52,7 @@ const App = () => {
     audioWinner.play();
     return (
       <Container>
+        <canvas id="world" width="1920" height="979" />
         <Header score={score} round={currentRound} />
         <Row className="finish__container finish__container_absolute justify-content-lg-center">
           <Col lg={6}><img src="./images/winner.gif" alt="" /></Col>
@@ -68,6 +67,7 @@ const App = () => {
           </Col>
           <Col lg={11}><button type="button" className="btn btn-info reset-button" onClick={reset}>One more time!</button></Col>
         </Row>
+        <Sharingan />
       </Container>
     );
   }
@@ -75,6 +75,7 @@ const App = () => {
   if (isFinish) {
     return (
       <Container>
+        <canvas id="world" width="1920" height="979" />
         <Header score={score} round={currentRound} />
         <Row className="finish__container justify-content-lg-center">
           <Col lg={4}><h2>Congratulations!</h2></Col>
@@ -89,12 +90,14 @@ const App = () => {
           </Col>
           <Col lg={11}><button type="button" className="btn btn-info reset-button" onClick={reset}>One more time!</button></Col>
         </Row>
+        <Sharingan />
       </Container>
     );
   }
 
   return (
     <Container>
+      <canvas id="world" width="1920" height="979" />
       <Header score={score} round={currentRound} />
       <Question item={currentQuestion} isRight={isRight} />
       <Row className="answers__container">
@@ -128,6 +131,7 @@ const App = () => {
       <Row className="button__control">
         <button type="button" className="btn btn-info" disabled={isRight ? '' : 'disabled'} onClick={setNewLevel}>Next level</button>
       </Row>
+      <Sharingan />
     </Container>
   );
 };

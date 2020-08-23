@@ -4,10 +4,10 @@ import { Row, Col } from 'react-bootstrap';
 const Header = ({ score, round }) => (
   <>
     <Row>
-      <Col lg={10}>
+      <Col lg={10} md={8} xs={10}>
         <h2 className="title"> Anime Quiz </h2>
       </Col>
-      <Col lg={2}>
+      <Col lg={2} md={4} xs={4} className="score">
         <span>
           score:
           {score}
