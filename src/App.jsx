@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Container, Row } from 'react-bootstrap';
 import Header from './components/header/Header';
 import Question from './components/question/Question';
@@ -8,6 +8,9 @@ import animeData from './data/anime';
 import Sharingan from './components/sharingan/Sharingan';
 import getRandomInt from './utils/randomInt';
 import Result from './components/result/Result';
+import setBodyImage from './utils/setBodyImage';
+import Loader from './components/Loader/Loader';
+import animation from './utils/backgroundAnimation';
 
 const { data } = animeData;
 const audioWinner = new Audio('./audio/one-punch-man.mp3');
@@ -26,6 +29,14 @@ const App = () => {
   const [currentQuestion, setQuestion] = useState(
     data[currentRound][getRandomInt(maxAnswers)],
   );
+  const [isBacgroundSeted, setIsBacgroundSeted] = useState(false);
+
+  useEffect(() => {
+    setBodyImage('./images/1.jpg').finally(() => {
+      setIsBacgroundSeted(true);
+      animation();
+    });
+  }, []);
 
   console.log(`Правильный ответ: ${currentQuestion.name}`);
 
@@ -68,6 +79,10 @@ const App = () => {
       audioWrongAnswer.play();
     }
   };
+
+  if (!isBacgroundSeted) {
+    return <Loader />;
+  }
 
   return (
     <Container>
