@@ -3,6 +3,7 @@ import './audio.scss';
 import useAudio from './useAudio';
 import TimeBar from './TimeBar';
 import PlaybackButton from './PlaybackButton';
+import Volume from './Volume';
 
 const AudioPlayer = ({ url, id }) => {
   const [audioElement, audioProps] = useAudio(url, id);
@@ -25,6 +26,11 @@ const AudioPlayer = ({ url, id }) => {
             duration={audioProps.duration}
             progress={audioProps.progress}
             setTime={audioProps.setTime}
+          />
+          <Volume
+            value={audioProps.volume}
+            setVolume={audioProps.setNewVolume}
+            setMuted={audioProps.setMuted}
           />
         </div>
       )}

@@ -42,6 +42,7 @@ const App = () => {
 
   const reset = () => {
     audioWinner.pause();
+    audioWinner.currentTime = 0.0;
     data.forEach((element) => {
       element.forEach((x) => { x.selected = false; });
     });

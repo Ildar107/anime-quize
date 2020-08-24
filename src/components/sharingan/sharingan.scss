@@ -15,14 +15,14 @@
   }
 
 .circle:hover {
-    background: #dd0a3b;
-    
+    background: #a019b7;
+    opacity: 1;
 }
 
 .circle:active {
-    background: #dd0a3b;
+    background: #a019b7;
     transform: scale(0.9);
-    
+    opacity: 1;
 }
 
 .circle-load {
@@ -30,10 +30,11 @@
 }
  
 .circle-in {
-    background: #770b24;
+    background: #9c27b0;
     position: absolute;
     bottom: 23px;
     right: 26px;
+    opacity: 0.65;
   }
   
   .circle-in:before {
