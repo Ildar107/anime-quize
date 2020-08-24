@@ -19,6 +19,8 @@ const audioWrongAnswer = new Audio('./audio/error.mp3');
 const maxAnswers = 6;
 const maxRounds = 6;
 const maxScore = 30;
+const winnerImg = new Image();
+winnerImg.src = './images/winner.gif';
 
 const App = () => {
   const [currentRound, setRound] = useState(0);
@@ -90,7 +92,15 @@ const App = () => {
       <Header score={score} round={currentRound} />
       {
         isFinish
-          ? <Result score={score} reset={reset} maxScore={maxScore} audioWinner={audioWinner} />
+          ? (
+            <Result
+              score={score}
+              reset={reset}
+              maxScore={maxScore}
+              audioWinner={audioWinner}
+              winnerImg={winnerImg}
+            />
+          )
           : (
             <>
               <Question item={currentQuestion} isRight={isRight} />
