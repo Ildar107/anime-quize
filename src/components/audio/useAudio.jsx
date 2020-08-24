@@ -45,7 +45,6 @@ function useAudio(url, id) {
         audioRef.current.muted = isMute;
       },
       setNewVolume: (value) => {
-        console.log(value);
         audioRef.current.volume = value / 100;
         setVolume(value);
       },
