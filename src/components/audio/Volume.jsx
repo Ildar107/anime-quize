@@ -16,6 +16,7 @@ const Volume = ({ value, setVolume, setMuted }) => {
   const handleChange = ({ target }) => {
     setVolumeValue(target.value);
     setVolume(target.value);
+    setIsMuted(false);
     setMuted(false);
   };
 
