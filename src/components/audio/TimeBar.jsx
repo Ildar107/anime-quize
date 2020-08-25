@@ -26,9 +26,9 @@ function getNewTimeProps(barRect, clientX, duration) {
     Math.floor(((clientX - barRect.left) / barRect.width) * duration),
   );
 
-  const progress = (seconds / duration) * 100;
+  const newProgress = (seconds / duration) * 100;
 
-  return { seconds, progress };
+  return { seconds, newProgress };
 }
 
 function TimeBar({
@@ -39,34 +39,45 @@ function TimeBar({
   currentTime,
   isSeeking,
   setTime,
+  loadProgress,
 }) {
   const barRef = React.useRef(null);
 
   const [barStyle, setBarStyle] = useDirectStyle();
   const [circleStyle, setCircleStyle] = useDirectStyle();
   const [ignoreTimeUpdates, setIgnoreTimeUpdates] = React.useState(false);
+
   // eslint-disable-next-line
-  function setStyles(progress) {
+  function setStyles(progress, buffered = loadProgress) {
     setCircleStyle({
       left: `${progress}%`,
     });
 
     setBarStyle({
-      background: `linear-gradient(to right, rgb(111 35 123) 0%, rgb(79 20 88) ${progress}%,  rgb(100 93 101) ${progress}%, rgb(64 51 51) 100%)`,
+      background: `linear-gradient(to right, rgb(111 35 123) 0%, rgb(79 20 88) ${progress}%,  rgb(100 93 101) ${progress}%, rgb(158 161 169 / 35%) ${buffered}%, rgb(158 161 169 / 35%) ${buffered}%, rgb(64 51 51) ${buffered || 100}% )`,
     });
   }
 
+  const handleClick = (e) => {
+    console.log(e.clientX);
+    const { seconds, newProgress } = getNewTimeProps(
+      barRef.current.getBoundingClientRect(),
+      e.clientX,
+      duration,
+    );
+    setStyles(newProgress);
+    setTime(seconds);
+  };
+
   const bind = useDrag(
     ({
-      xy, first, last, event,
+      xy, first, last,
     }) => {
-      event.preventDefault();
-
       if (first) {
         setIgnoreTimeUpdates(true);
       }
-      // eslint-disable-next-line
-      const { seconds, progress } = getNewTimeProps(
+
+      const { seconds, newProgress } = getNewTimeProps(
         barRef.current.getBoundingClientRect(),
         xy[0],
         duration,
@@ -78,7 +89,7 @@ function TimeBar({
         return;
       }
 
-      setStyles(progress);
+      setStyles(newProgress);
     },
     { event: { passive: false, capture: true } },
   );
@@ -88,24 +99,31 @@ function TimeBar({
       return;
     }
 
-    setStyles(progress);
+    setStyles(progress, loadProgress);
     // eslint-disable-next-line
   }, [progress]);
+
+  React.useEffect(() => {
+    setBarStyle({
+      background: `linear-gradient(to right, rgb(111 35 123) 0%, rgb(79 20 88) ${progress}%,  rgb(100 93 101) ${progress}%, rgb(158 161 169 / 35%) ${loadProgress}%, rgb(158 161 169 / 35%) ${loadProgress}%, rgb(64 51 51) ${loadProgress || 100}% )`,
+    });
+    // eslint-disable-next-line
+  }, [loadProgress]);
 
   return (
     <div
       className={`timebar ${className || ''}`}
       style={{ position: 'relative', ...style }}
     >
-      <directstyled.div ref={barRef} className="timebar-bar" style={barStyle} />
+      <directstyled.div ref={barRef} className="timebar-bar" style={barStyle} onClick={handleClick} />
       <directstyled.div
         {...bind()}
         className="timebar-circle"
         style={circleStyle}
       />
-      <div className="timebar-time-info">
-        <div>{isSeeking ? 'buffering...' : formatTime(currentTime)}</div>
-        <div>{formatTime(duration)}</div>
+      <div className="timebar-time-info" draggable={false}>
+        <div draggable={false}>{isSeeking ? 'buffering...' : formatTime(currentTime)}</div>
+        <div draggable={false}>{formatTime(duration)}</div>
       </div>
     </div>
   );

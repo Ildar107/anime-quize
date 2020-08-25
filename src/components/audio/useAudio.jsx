@@ -9,6 +9,7 @@ function useAudio(url, id) {
   const [isLoading, setLoading] = React.useState(true);
   const [isSeeking, setSeeking] = React.useState(false);
   const [volume, setVolume] = React.useState(50);
+  const [loadProgress, setLoadProgress] = React.useState(0);
 
   React.useEffect(() => {
     setLoading(true);
@@ -32,6 +33,18 @@ function useAudio(url, id) {
         setCurrentTime(audioRef.current.currentTime);
       }}
       volume={volume}
+      onProgress={() => {
+        const audio = audioRef.current;
+        if (audio.duration > 0) {
+          for (let i = 0; i < audio.buffered.length; i += 1) {
+            if (audio.buffered.start(audio.buffered.length - 1 - i) < audio.currentTime) {
+              const value = audio.buffered.end(audio.buffered.length - 1 - i) / audio.duration;
+              setLoadProgress(value * 100);
+              break;
+            }
+          }
+        }
+      }}
       hidden
     />,
     {
@@ -40,6 +53,7 @@ function useAudio(url, id) {
       playbackStatus,
       isSeeking,
       isLoading,
+      loadProgress,
       volume,
       setMuted: (isMute) => {
         audioRef.current.muted = isMute;

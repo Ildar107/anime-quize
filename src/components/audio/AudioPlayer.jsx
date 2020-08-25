@@ -12,28 +12,29 @@ const AudioPlayer = ({ url, id }) => {
     <div className="audio-player">
       {audioElement}
 
-      {audioProps.isLoading ? (
+      {/* {audioProps.isLoading ? (
         <div style={{ color: 'white' }}>Loading...</div>
-      ) : (
-        <div className="controls">
-          <PlaybackButton
-            onClick={audioProps.togglePlaybackStatus}
-            playbackStatus={audioProps.playbackStatus}
-          />
-          <TimeBar
-            currentTime={audioProps.currentTime}
-            isSeeking={audioProps.isSeeking}
-            duration={audioProps.duration}
-            progress={audioProps.progress}
-            setTime={audioProps.setTime}
-          />
-          <Volume
-            value={audioProps.volume}
-            setVolume={audioProps.setNewVolume}
-            setMuted={audioProps.setMuted}
-          />
-        </div>
-      )}
+      ) : ( */}
+      <div className="controls">
+        <PlaybackButton
+          onClick={audioProps.togglePlaybackStatus}
+          playbackStatus={audioProps.playbackStatus}
+        />
+        <TimeBar
+          currentTime={audioProps.currentTime}
+          isSeeking={audioProps.isSeeking}
+          duration={audioProps.duration}
+          progress={audioProps.progress}
+          setTime={audioProps.setTime}
+          loadProgress={audioProps.loadProgress}
+        />
+        <Volume
+          value={audioProps.volume}
+          setVolume={audioProps.setNewVolume}
+          setMuted={audioProps.setMuted}
+        />
+      </div>
+      {/* )} */}
     </div>
   );
 };

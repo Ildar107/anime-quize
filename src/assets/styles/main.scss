@@ -6,6 +6,10 @@
     src: url('../../assets/fonts/9420.ttf');
 }
 
+html {
+    scroll-behavior: smooth;
+}
+
 body {
     background-size: cover;
     background-repeat: no-repeat;
@@ -54,6 +58,7 @@ body {
     background: #37363873;
     box-shadow: -1px 1px 9px 0px #0c163763;
     border-radius: 5px;
+    min-height: 200px;
 
     & .question__container {
         display: flex;
@@ -93,6 +98,8 @@ body {
     height: 534px;
     box-shadow: -1px 1px 9px 0px #0c163763;
     border-radius: 5px;
+    min-height: 534px;
+
 }
 
 .answer-audio {
@@ -164,17 +171,20 @@ body {
 .answer__description {
     padding: 10px 20px;
     position: relative;
+    transition: all 2.7s ease-in-out;
 }
 
 .answer__description img {
     width: 360px;
     display: block;
+    transition: all 2.7s ease-in-out;
 }
 
 .answer__description_first {
     display: flex;
     align-items: center;
     justify-content: center;
+    transition: all 2.7s ease-in-out;
 }
 
 .description__title {
@@ -183,6 +193,7 @@ body {
     align-items: center;
     margin-right: 10px;
     height: 68px;
+    transition: all 2.7s ease-in-out;
 }
 
 .description__body {
@@ -269,6 +280,9 @@ body {
 @media (max-width: 1200px) {
     .circle {
         display: none;
+    }
+    .description__title {
+        grid-template-columns: 3.4fr 2fr;
     }
 }
 

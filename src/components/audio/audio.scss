@@ -2,6 +2,7 @@
     margin: 3% 40px 8px 0;
     width: 100%;
     min-width: 100px;
+    min-height: 52px;
   }
   
   .controls {
@@ -45,6 +46,8 @@
   
   .timebar-bar {
     height: 4px;
+    cursor: pointer;
+    background: linear-gradient(to right, rgb(111, 35, 123) 0%, rgb(79, 20, 88) 0%, rgb(100, 93, 101) 0%, rgba(158, 161, 169, 0.35) 0%, rgba(158, 161, 169, 0.35) 0%, rgb(64, 51, 51) 100%);
   }
   
   .timebar-circle {
@@ -65,6 +68,7 @@
     color: lightgrey;
     display: flex;
     justify-content: space-between;
+    user-select: none;
   }
 
   .volume i {
