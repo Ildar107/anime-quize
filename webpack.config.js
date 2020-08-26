@@ -5,7 +5,6 @@ const CopyWebpackPlugin = require('copy-webpack-plugin');
 module.exports = {
   entry: './src/main.jsx',
   context: path.resolve(__dirname),
-  devtool: 'eval-source-map',
   resolve: {
     extensions: ['.jsx', '.js'],
     modules: [path.resolve(__dirname, 'src'), 'node_modules'],
