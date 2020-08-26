@@ -29,6 +29,34 @@ body {
     align-items: center;
 }
 
+@keyframes pulsatewire{
+    0% {
+        transform: perspective(900px) rotateX(6deg) rotateY(-3deg);
+    }
+
+    25% {
+        transform: perspective(900px) rotateX(18deg) rotateY(-16deg);
+    }
+
+    45% {
+        transform: perspective(900px) rotateX(-18deg) rotateY(16deg);
+    }
+
+    65% {
+        transform: perspective(900px) rotateX(18deg) rotateY(16deg);
+    }
+
+    85% {
+        transform: perspective(900px) rotateX(-18deg) rotateY(-16deg);
+    }
+
+    100% {
+        transform: perspective(900px) rotateX(0) rotateY(0deg);
+    }
+}
+
+
+
 .score {
     justify-content: flex-end;
     display: flex;
@@ -53,6 +81,7 @@ body {
 
 .secret__img {
     filter: invert(.85);
+    animation: pulsatewire 6s ease infinite;
 }
 
 
@@ -62,6 +91,8 @@ body {
     box-shadow: -1px 1px 9px 0px #0c163763;
     border-radius: 5px;
     min-height: 200px;
+
+    
 
     & .question__container {
         display: flex;
@@ -97,6 +128,7 @@ body {
 }
 
 .answers__container {
+    
     margin-top: 1%;
     height: 534px;
     box-shadow: -1px 1px 9px 0px #0c163763;
