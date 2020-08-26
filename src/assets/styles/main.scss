@@ -21,9 +21,12 @@ body {
 #root {
     width: 100%;
     height: 100%;
+    min-height: 100vh;
     padding-top: 2vw;
     font-family: 'AnimeAcev05';
     color: #d9d1bd;
+    display: flex;
+    align-items: center;
 }
 
 .score {
@@ -178,6 +181,7 @@ body {
     width: 360px;
     display: block;
     transition: all 2.7s ease-in-out;
+    border-radius: 5px;
 }
 
 .answer__description_first {
@@ -242,7 +246,8 @@ body {
 }
 
 .finish__container {
-    height: 400px;
+    align-items: center;
+    min-height: 812px;
     margin-top: 2%;
     background: #37363873;
     padding-top: 40px;
@@ -253,13 +258,14 @@ body {
 }
 
 .finish__container_absolute {
-    height: 739px;
+    min-height: 812px;
     img {
         margin-bottom: 2%;
     }
 
     h3 {
-    text-align: center;
+        text-align: center;
+        margin: 42px 0px;
     }
 }
 
@@ -277,6 +283,18 @@ body {
     height: 100%;
 }
 
+
+.btn-info:not(:disabled):not(.disabled):active, .btn-info:not(:disabled):not(.disabled).active, .show > .btn-info.dropdown-toggle, .btn-info, .btn-info:hover {
+    color: #d9d1bd;
+}
+
+@media (min-width: 2000px) {
+    #root {
+        display: flex;
+        align-items: center;
+    }
+}
+
 @media (max-width: 1200px) {
     .circle {
         display: none;
@@ -287,6 +305,11 @@ body {
 }
 
 @media (max-width: 991px) {
+
+    body {
+        background-size: 3840px 2206px;
+    }
+
     .answer__description {
         margin-top: 1%;
         padding: 20px 20px;
@@ -358,10 +381,18 @@ body {
 }
 
 @media (max-width: 500px) {
+    .finish__container {
+        min-height: 636px;
+    }
     .finish__container_absolute {
+        min-height: 636px;
         height: 100%;
         img {
             width: 100%;
+        }
+
+        h3 {
+            margin: 0px;
         }
     }
 }

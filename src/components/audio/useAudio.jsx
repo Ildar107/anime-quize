@@ -23,10 +23,18 @@ function useAudio(url, id) {
         setLoading(false);
         setDuration(audioRef.current.duration);
       }}
+      onEmptied={() => setLoadProgress(0)}
       onSeeking={() => setSeeking(true)}
       onSeeked={() => setSeeking(false)}
       onPause={() => setPlaybackStatus('pause')}
-      onPlay={() => document.querySelectorAll('audio').forEach((item) => { if (item.id !== id) item.pause(); })}
+      onPlay={() => {
+        document.querySelectorAll('audio').forEach((item) => { if (item.id !== id) item.pause(); });
+        const audio = audioRef.current;
+        if (audio.duration > 0 && audio.buffered.length > 0) {
+          const value = audio.buffered.end(0) / audio.duration;
+          setLoadProgress(value * 100);
+        }
+      }}
       src={url}
       ref={audioRef}
       onTimeUpdate={() => {
