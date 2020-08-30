@@ -19,14 +19,18 @@ function useAudio(url, id) {
     <audio
       id={id}
       onLoadedData={() => {
-        setPlaybackStatus('pause');
         setLoading(false);
         setDuration(audioRef.current.duration);
       }}
-      onEmptied={() => setLoadProgress(0)}
+      onEmptied={() => {
+        setLoadProgress(0);
+        setPlaybackStatus('pause');
+      }}
       onSeeking={() => setSeeking(true)}
       onSeeked={() => setSeeking(false)}
-      onPause={() => setPlaybackStatus('pause')}
+      onPause={() => {
+        setPlaybackStatus('pause');
+      }}
       onPlay={() => {
         document.querySelectorAll('audio').forEach((item) => { if (item.id !== id) item.pause(); });
         const audio = audioRef.current;

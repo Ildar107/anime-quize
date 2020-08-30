@@ -31,16 +31,18 @@ const App = () => {
   const [currentQuestion, setQuestion] = useState(
     data[currentRound][getRandomInt(maxAnswers)],
   );
-  const [isBacgroundSeted, setIsBacgroundSeted] = useState(false);
+  const [isBackgroundSeted, setIsBackgroundSeted] = useState(false);
 
   useEffect(() => {
     setBodyImage('./images/1.jpg').finally(() => {
-      setIsBacgroundSeted(true);
+      setIsBackgroundSeted(true);
       animation();
     });
   }, []);
 
-  console.log(`Правильный ответ: ${currentQuestion.name}`);
+  useEffect(() => {
+    console.log(`Правильный ответ: ${currentQuestion.name}`);
+  }, [currentRound]);
 
   const setNewLevel = () => {
     if (currentRound + 1 < maxRounds) {
@@ -82,7 +84,7 @@ const App = () => {
     }
   };
 
-  if (!isBacgroundSeted) {
+  if (!isBackgroundSeted) {
     return <Loader />;
   }
 

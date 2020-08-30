@@ -75,7 +75,6 @@ function animation() {
     t;
   }()),
   a = (function () {
-    console.log(1);
     let e; let n; let
       i;
     for (i = [],

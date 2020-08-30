@@ -59,7 +59,6 @@ function TimeBar({
   }
 
   const handleClick = (e) => {
-    console.log(e.clientX);
     const { seconds, newProgress } = getNewTimeProps(
       barRef.current.getBoundingClientRect(),
       e.clientX,
