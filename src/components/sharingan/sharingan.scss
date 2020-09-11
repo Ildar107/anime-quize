@@ -1,0 +1,108 @@
+
+@keyframes sharingans {  
+ 
+    to{transform: rotate(360deg);}
+}
+
+.circle {
+    cursor: pointer;
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    border: 5px solid #111;
+    -webkit-box-shadow: inset 0 0 20px #111;
+    transition: all 0.7 ease-in-out;
+  }
+
+.circle:hover {
+    background: #a019b7;
+    opacity: 1;
+}
+
+.circle:active {
+    background: #a019b7;
+    transform: scale(0.9);
+    opacity: 1;
+}
+
+.circle-load {
+    animation: sharingans 1s linear infinite;
+}
+ 
+.circle-in {
+    background: #9c27b0;
+    position: absolute;
+    bottom: 23px;
+    right: 26px;
+    opacity: 0.65;
+  }
+  
+  .circle-in:before {
+    content: "";
+    position: absolute;
+    height: 18px;
+    width: 18px;
+    border-radius: 50%;
+    background-color: #111;
+    margin: 36px;
+  }
+  
+  .circle-in:after {
+    content: "";
+    position: absolute;
+    height: 67px;
+    width: 67px;
+    border-radius: 50%;
+    border: 5px solid rgba(17, 17, 17, 0.5);
+    margin: 12px;
+  }
+  
+  .curse {
+    height: 12px;
+    width: 12px;
+    position: absolute;
+    background: #111;
+    border-radius: 50%;
+  }
+  
+  .curse:before {
+    content: "";
+    position: absolute;
+    width: 8px;
+    height: 10px;
+    border-radius: 50%;
+    border-top: 4px solid #111;
+    border-left: 10px solid transparent;
+    left: 100%;
+    margin: -6% -58%;
+  }
+  
+  .curse-pos1 {
+    -webkit-transform: rotate(-180deg);
+    transform: rotate(-180deg);
+    position: absolute;
+    margin: 59px 15px;
+  }
+  
+  .curse-pos2 {
+    -webkit-transform: rotate(5deg);
+    transform: rotate(5deg);
+    position: absolute;
+    margin: 28px 95px;
+  }
+  
+  .curse-pos3 {
+    -webkit-transform: rotate(94deg);
+    transform: rotate(94deg);
+    position: absolute;
+    margin: 56px 65px;
+  }
+  /* --a21 CSS-- */
+  
+  .curse-mid {
+    -webkit-transform: rotate(-30deg);
+    transform: rotate(-30deg);
+    position: absolute;
+    margin: 8px 42px;
+  }
+  
